@@ -1,0 +1,71 @@
+<html>
+    <head>
+	    <title>Login!</title>
+		<style type = "text/css">
+		    .tips {display:none}
+			.left1 {left:200px;}
+			.left2 {left:230px;}
+		</style>
+		<script type = "text/javascript">
+		function Name_blur()
+		{
+		    if (document.MyForm.myName.value == "")
+			    document.getElementById("here1").className = "";
+			else
+			    document.getElementById("here1").className = "tips";
+		}
+		function Age_blur()
+		{
+		    if (document.MyForm.myAge.value == "")
+			    document.getElementById("here2").className = "";
+			else if (isNaN(document.MyForm.myAge.value) == true)
+			{
+			    document.getElementById("here2").className = "";
+				document.MyForm.myAge.focus();
+				document.MyForm.myAge.select();
+			}
+			else
+			    document.getElementById("here2").className = "tips";
+		}
+		function checkkk()
+		{
+		    
+		    if (document.MyForm.myAge.value < 1 || document.MyForm.myAge.value > 120
+			     || isNaN(document.MyForm.myAge.value) == true )
+			{
+			    if (document.MyForm.myName.value == "" || 
+			    document.MyForm.myAge.value == "")
+				    alert("Please fill in the blanks!");
+				else
+			    {
+			        alert("Your age is not valid!");
+					document.MyForm.myAge.focus();
+					document.MyForm.myAge.select();
+				}
+			}
+			else if (document.MyForm.myName.value != "" && 
+			    document.MyForm.myAge.value != "")
+			{
+			    alert("Hi  " + document.MyForm.myName.value + "! ");
+			}
+			else
+			    alert("Please fill in the blanks!");
+		}
+		</script>
+	</head>
+	
+	<body>
+	    <form action = "" name = "MyForm" style = "margin-left:150px; margin-top:100px">
+		    Name:<br>
+			<input type = "text" name = "myName" onblur = "Name_blur()">
+			<span id = "here1" class = "tips" style = "color:purple">
+			    Please input your name~!</span><br>
+			Age:<br>
+			<input type = "text" name = "myAge" onblur = "Age_blur()">
+			<span id = "here2" class = "tips" style = "color:purple">
+			    Please input a number~!</span><br><br>
+			<input type = "button" name = "myButton" value = "Register!" onclick = "checkkk()">
+		</form>
+		<script type = "text/javascript" src = "objects.html"></script>
+	</body>
+</html>
